@@ -40,6 +40,7 @@ function NovaPergunta(props) {
 
 function Pergunta() {
   const [listaPerguntas, setListaPerguntas] = React.useState([]);
+  const [termoBusca, setTermoBusca] = React.useState('');
 
   function adicionarNovaPergunta(id_pergunta, pergunta) {
     setListaPerguntas((prev) => {
@@ -98,13 +99,27 @@ function Pergunta() {
   }
     
   React.useEffect(() => {
-    fetch("http://localhost:5000")
+    let atual = true;
+    fetch('http://localhost:5000/perguntas/busca?q=' + encodeURIComponent(termoBusca))
     .then((res) => res.json())
-    .then((data) => setListaPerguntas(data));
-  }, []);
-    
+    .then((data) => { if (atual) setListaPerguntas(data); });
+    return () => { atual = false; };
+  }, [termoBusca]);
+
+  const semResultados = termoBusca.trim() !== '' && listaPerguntas.length === 0;
+
   return (
-    <div className="container"> 
+    <div className="container">
+      <Container className="mb-3">
+        <Form.Control
+          id="campo-busca"
+          type="search"
+          placeholder="Buscar perguntas por palavra-chave"
+          value={termoBusca}
+          onChange={(event) => setTermoBusca(event.target.value)}
+        />
+        { semResultados && <p id="sem-resultados" className="mt-2"> Nenhuma pergunta encontrada </p> }
+      </Container>
       <TabelaPerguntas />
     </div>
   );
