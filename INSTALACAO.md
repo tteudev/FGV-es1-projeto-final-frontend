@@ -1,6 +1,6 @@
 # Instalação e execução do frontend
 
-O passo a passo completo, com os problemas encontrados no ambiente (Windows 11 e Node 24), está em [INSTALACAO.md do backend](https://github.com/tteudev/FGV-es1-projeto-final/blob/main/INSTALACAO.md). Aqui está o resumo do que se refere ao frontend.
+O passo a passo completo, com os problemas encontrados no ambiente (Windows 11 e Node 24), está em [INSTALACAO.md do backend](https://github.com/tteudev/FGV-es1-projeto-final/blob/main/parte1/INSTALACAO.md). Aqui está o resumo do que se refere ao frontend.
 
 ## Pré-requisitos
 
@@ -28,4 +28,4 @@ npm run build
 
 - O `npm install` mostra avisos de vulnerabilidades em dependências de desenvolvimento do `react-scripts`. Não usei `npm audit fix --force`, pois poderia quebrar a aplicação.
 - Se a lista de perguntas ficar vazia, confira se o backend está rodando na porta 5000.
-- Funcionalidade adicionada neste fork: campo de busca por palavra-chave em `src/pages/Pergunta.js` (ver `IMPLEMENTACAO_SOLID.md` no repositório do backend).
+- Funcionalidade adicionada neste fork: campo de busca por palavra-chave em `src/pages/Pergunta.js` (ver `parte3/IMPLEMENTACAO_SOLID.md` no repositório do backend).
